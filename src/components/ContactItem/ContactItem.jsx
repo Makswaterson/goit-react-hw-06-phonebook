@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import { StyledItem, StyledBtn } from './ContactItem.styled';
 
 export const ContactItem = ({ id, name, number, onDelete }) => {
+  console.log(name);
+  console.log(number);
   return (
     <StyledItem>
       {name} : {number}

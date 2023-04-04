@@ -5,26 +5,34 @@ import { getAllContacts, getAllFilters } from 'redux/selectors';
 import { deleteContact } from 'redux/contactsSlice';
 import { toast } from 'react-hot-toast';
 
-const getVisibleContacts = (filters, contacts) => {
-  const normalizeFilters = filters.toLowerCase().trim();
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizeFilters)
-  );
-};
-
 export const ContactList = () => {
   const contacts = useSelector(getAllContacts);
+  console.log(contacts);
   const filters = useSelector(getAllFilters);
+  console.log(contacts);
   const dispatch = useDispatch();
-  const setVisibleContacts = getVisibleContacts(filters, contacts);
 
   const deleteContacts = id => {
     dispatch(deleteContact(id));
-    const deleteToast = contacts.filter(contact => contact.id === id);
+    const deleteToast = contacts.find(contact => contact.id === id);
+    console.log(deleteToast);
     toast.success(
-      `${deleteToast} is deleted from the contacts list of phonebook!`
+      `${deleteToast.name} is deleted from the contacts list of phonebook!`
     );
   };
+  const setVisibleContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filters.toLowerCase().trim())
+  );
+
+  // const getVisibleContacts = (contacts, filters) => {
+  //   const normalizeFilters = filters.toString().toLowerCase().trim();
+  //   return Array.isArray(contacts)
+  //     ? contacts.filter(contact =>
+  //         contact.name.toLowerCase().includes(normalizeFilters)
+  //       )
+  //     : [];
+  // };
+  // const setVisibleContacts = getVisibleContacts(filters, contacts);
 
   return (
     <Wrapper>
