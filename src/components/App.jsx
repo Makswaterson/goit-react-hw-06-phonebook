@@ -6,39 +6,8 @@ import { useSelector } from 'react-redux';
 import { getAllContacts } from '../redux/selectors';
 import { Toaster } from 'react-hot-toast';
 
-// const getInitialContacts = () => {
-//   const savedContacts = localStorage.getItem('contacts');
-//   if (savedContacts !== null) {
-//     const parsedContacts = JSON.parse(savedContacts);
-//     return parsedContacts;
-//   }
-//   return [];
-// };
-
 export const App = () => {
   const contacts = useSelector(getAllContacts);
-
-  // const [contacts, setContacts] = useState(getInitialContacts);
-  // const [filter, setFilter] = useState('');
-
-  //   useEffect(() => {
-  //     localStorage.setItem('contacts', JSON.stringify(contacts));
-  //   }, [contacts]);
-
-  // const onDeleteContacts = contactId => {
-  //   setContacts(prevState =>
-  //     prevState.filter(contact => contact.id !== contactId)
-  //   );
-  // };
-  // const onHandleFilter = evt => setFilter(evt.target.value);
-
-  // const getVisibleContacts = () => {
-
-  //   const normalizedFilter = filter.toLowerCase().trim();
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
 
   return (
     <AppStyled>

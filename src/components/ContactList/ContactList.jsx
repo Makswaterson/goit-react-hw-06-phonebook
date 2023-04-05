@@ -7,9 +7,7 @@ import { toast } from 'react-hot-toast';
 
 export const ContactList = () => {
   const contacts = useSelector(getAllContacts);
-  // console.log(contacts);
   const filters = useSelector(getAllFilters);
-  // console.log(contacts);
   const setVisibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filters.toLowerCase().trim())
   );
@@ -24,16 +22,6 @@ export const ContactList = () => {
       `${deleteToast.name} is deleted from the contacts list of phonebook!`
     );
   };
-
-  // const getVisibleContacts = (contacts, filters) => {
-  //   const normalizeFilters = filters.toString().toLowerCase().trim();
-  //   return Array.isArray(contacts)
-  //     ? contacts.filter(contact =>
-  //         contact.name.toLowerCase().includes(normalizeFilters)
-  //       )
-  //     : [];
-  // };
-  // const setVisibleContacts = getVisibleContacts(filters, contacts);
 
   return (
     <Wrapper>
